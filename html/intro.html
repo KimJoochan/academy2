@@ -1,0 +1,255 @@
+<!doctype html>
+
+<html>
+
+<head>
+    <title>Page Title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0">
+    <title>병원장 인산말</title>
+    <link href="reset.css" type="text/css" rel="stylesheet">
+    <link href="intro.css" type="text/css" rel="stylesheet">
+    <style>
+
+
+    </style>
+    <script src="jquery/jquery-3.2.1.js"></script>
+    <script src="jquery/prefixfree.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#tre').mouseenter(function() {
+                $('#tre_sub_menu').css({
+                    width: $('nav').width()
+                });
+            }).stop().mouseleave(function() {
+                $('#tre_sub_menu').css({
+                    width: 0
+                });
+            });
+
+            $('#hide_menu_nav').css({
+                width: $('nav').width()
+            });
+            $('#hide_menu').click(function() {
+                $('#hide_menu_nav').slideToggle();
+            });
+            $('#host').mouseenter(function() {
+                $('#host_sub_menu').css({
+                    width: $('nav').width()
+                });
+            }).stop().mouseleave(function() {
+                $('#host_sub_menu').css({
+                    width: 0
+                });
+            });
+            $('#logo').click(function() {
+                location.href = "index.html";
+            });
+        });
+
+    </script>
+
+    <body>
+        <nav class="down">
+            <h1 id="logo"></h1>
+            <h1 id="hide_menu"></h1>
+            <div id="hide_menu_nav">
+                <ul class="hide_nav_con">
+                    <li class="point">진료안내</li>
+                    <li class="sub_point">진료시간표</li>
+                    <li class="sub_point">외래진료</li>
+                    <li class="sub_ital">진료전찰</li>
+                    <li class="sub_ital">진료비 서비스</li>
+                    <li class="sub_point">응급진료</li>
+                    <li class="sub_point">입원진료</li>
+                    <li class="sub_ital">입원안내</li>
+                    <li class="sub_ital">병실생활안내</li>
+                    <li class="sub_ital">면회안내</li>
+                    <li class="sub_ital">퇴원안내</li>
+                    <li class="sub_point">건강보험</li>
+                    <li class="sub_ital">보험안내</li>
+                    <li class="sub_ital">비급여 진료비</li>
+                    <li class="sub_ital">가정간호</li>
+                    <li class="sub_point">사회산업</li>
+                    <li class="sub_point">의료진 찾기</li>
+                    <li class="sub_point">전문센터</li>
+                    <li class="sub_point">진료과</li>
+                    <li class="sub_point">암센터</li>
+                    <li class="sub_point">치과병원</li>
+                    <li class="sub_point">전문클리닉</li>
+                </ul>
+                <ul class="hide_nav_con">
+                    <li class="point">병원안내</li>
+                    <li class="sub_point">찾아오시는길</li>
+                    <li class="sub_point">주차안내</li>
+                    <li class="sub_point">주요전화번호</li>
+                    <li class="sub_point">층별위치안내</li>
+                    <li class="sub_point">병원시설안내</li>
+                    <li class="sub_ital">원내시설</li>
+                    <li class="sub_ital">원외시설</li>
+                    <li class="sub_point">자원봉사</li>
+                    <li class="sub_ital">자원봉사활동</li>
+                    <li class="sub_ital">자원봉사영역</li>
+                    <li class="sub_ital">참여안내</li>
+                    <li class="sub_ital">공지사항</li>
+                    <li class="sub_point on">병원인사말</li>
+                    <li class="sub_point">역대 병원장</li>
+                    <li class="sub_point">조직도</li>
+                    <li class="sub_point">병원소식</li>
+                    <li class="sub_point">언론보도</li>
+                    <li class="sub_point">채용공고</li>
+                    <li class="sub_point">입찰공고</li>
+                </ul>
+                <ul class="hide_nav_con">
+                    <li class="point">건강정보</li>
+                    <li class="sub_point">건강칼럼</li>
+                    <li class="sub_point">건강강좌</li>
+                    <li class="sub_point">학술행사</li>
+                    <li class="sub_point">질병정보</li>
+                    <li class="sub_point">검사정보</li>
+                    <li class="sub_point">첨단장비</li>
+                </ul>
+                <ul class="hide_nav_con">
+                    <li class="point">고객서비스</li>
+                    <li class="sub_point">자주하는 질물</li>
+                    <li class="sub_point">복약상담</li>
+                    <li class="sub_point">고객의 소리</li>
+                    <li class="sub_point">서식 다우로드</li>
+                </ul>
+            </div>
+            <ul id="menu">
+                <li id="tre">진료<br><em>treament</em>
+                    <ul class="sub_menu" id="tre_sub_menu">
+                        <li>시간표</li>
+                        <li class="ground">외래진료
+                            <ul class="double_sub" id="tre_dou_1">
+                                <li>진료절차</li>
+                                <li>진료서비스</li>
+                            </ul>
+                        </li>
+                        <li>응급진료</li>
+                        <li class="ground">입원진료
+                            <ul class="double_sub" id="tre_dou_2">
+                                <li>입원안내</li>
+                                <li>병실생활</li>
+                                <li>면회안내</li>
+                                <li>퇴원안내</li>
+                            </ul>
+                        </li>
+                        <li class="ground">건강보험
+                            <ul class="double_sub" id="tre_dou_3">
+                                <li>보험안내</li>
+                                <li>비급여진료비</li>
+                            </ul>
+                        </li>
+                        <li class="ground">진료과
+                            <ul class="double_sub" id="tre_dou_4">
+                                <li>의료진</li>
+                                <li>전문센터</li>
+                                <li>진료과</li>
+                                <li>암센터</li>
+                                <li>치과병원</li>
+                            </ul>
+                        </li>
+                        <li>가정간호</li>
+                        <li>사회사업</li>
+                    </ul>
+                </li>
+                <li id="host">병원<br><em>hospital</em>
+                    <ul class="sub_menu" id="host_sub_menu">
+                        <li class="ground">병원소개
+                            <ul class="double_sub" id="tre_dou_5">
+                                <li class="on">인사말</li>
+                                <li>병원장</li>
+                                <li>조직도</li>
+                                <li>임상성과</li>
+                                <li>병원소식</li>
+                                <li>언론보도</li>
+                                <li>채용공고</li>
+                                <li>입찰공고</li>
+                            </ul>
+                        </li>
+                        <li class="ground">이용안내 </li>
+                        <li class="ground">시설안내
+                            <ul class="double_sub" id="tre_dou_6">
+                                <li>원내 병원시설</li>
+                                <li>원외 병원시설</li>
+                            </ul>
+                        </li>
+                        <li class="ground">자원봉사
+                            <ul class="double_sub" id="tre_dou_7">
+                                <li>자원봉사활동</li>
+                                <li>자원봉사영역</li>
+                                <li>참여안내</li>
+                                <li>공지사항</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dow_tag">건강정보<br><em>health</em>
+                    <ul class="fir_menu low_menu">
+                        <li>건강칼럼</li>
+                        <li>건강강좌</li>
+                        <li>학술행사</li>
+                        <li>질병정보</li>
+                        <li>검사정보</li>
+                        <li>첨단장비</li>
+                    </ul>
+                </li>
+                <li class="dow_tag">고객센터<br><em>community</em>
+                    <ul class="sec_menu low_menu">
+                        <li>자주하는 질문</li>
+                        <li>복약상담</li>
+                        <li>고객의 소리</li>
+                        <li>신생아 탄생축하</li>
+                        <li>서식다운로드</li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <div id="wrap">
+            <section></section>
+        </div>
+        <footer>
+            <div id="top">
+                <h2 id="sub_logo"></h2>
+                <ul class="sub_sub_nav">
+                    <li>
+                        <h3>진료</h3>
+                    </li>
+                    <li>진료예약</li>
+                    <li>진료조회</li>
+                    <li>진료시간표</li>
+                    <li>의료진찾기</li>
+                </ul>
+                <ul class="sub_sub_nav">
+                    <li>
+                        <h3>병원</h3>
+                    </li>
+                    <li>인산말</li>
+                    <li>언론보도</li>
+                    <li>채용공고</li>
+                    <li>위치안내</li>
+                </ul>
+                <ul class="sub_sub_nav">
+                    <li>
+                        <h3>건강정보</h3>
+                    </li>
+                    <li>건강칼럼</li>
+                    <li>질병정보</li>
+                    <li>건강강좌</li>
+                    <li>건장정보</li>
+                </ul>
+                <ul class="sub_sub_nav">
+                    <li>
+                        <h3>고객센터</h3>
+                    </li>
+                    <li>FAQ</li>
+                    <li>고객의 소리</li>
+                    <li>서식다운로드</li>
+                </ul>
+            </div>
+
+        </footer>
+    </body>
+</head>
