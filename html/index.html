@@ -3,664 +3,524 @@
 <html>
 
 <head>
-    <title>Page Title</title>
+    <title>김주찬의 개인포트폴리</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1.0">
-    <title>아주대학교병원 리뉴얼</title>
-    <link href="reset.css" type="text/css" rel="stylesheet">
-    <link href="layout.css" type="text/css" rel="stylesheet">
-    <script src="jquery/jquery-3.2.1.js"></script>
-    <script src="jquery/prefixfree.js"></script>
-    <script>
-        $(document).ready(function() {
-            var click_num = 0;
-            $('.mask').css({
-                width: $(window).width(),
-                height: $(window).height()
-
-            });
-            $('#right').click(function() {
-
-                $('#img_wrap').animate({
-                    left: -1180
-                }, 1000, function() {
-                    $('#img_wrap').css('left', 0).find('li').first().appendTo('#img_wrap');
-                });
-            });
-            $('#left').click(function() {
-                click_num++;
-                if (click_num == 1) {
-                    alert("한번더 클릭");
-                }
-                $('#img_wrap').animate({
-                    left: 0
-                }, 1000, function() {
-                    $('#img_wrap').css('left', -1180).find('li:last').prependTo('#img_wrap');
-                });
-            });
-            $('#tre').mouseenter(function() {
-                $('#tre_sub_menu').css({
-                    width: $('nav').width()
-                });
-            }).stop().mouseleave(function() {
-                $('#tre_sub_menu').css({
-                    width: 0
-                });
-            });
-
-            $('#hide_menu_nav').css({
-                width: $('nav').width()
-            });
-            $('#hide_menu').click(function() {
-                $('#hide_menu_nav').slideToggle();
-            });
-            $('#host').mouseenter(function() {
-                $('#host_sub_menu').css({
-                    width: $('nav').width()
-                });
-            }).stop().mouseleave(function() {
-                $('#host_sub_menu').css({
-                    width: 0
-                });
-            });
-            var sct = $(window).scrollTop();
-            $(window).scroll(function() {
-                sct = $(window).scrollTop();
-
-                if (sct >= $('.mask').height()) {
-                    $('nav').removeClass('up');
-                    $('nav').addClass('down');
-                    $('#menu>li').removeClass('under');
-                    $('#menu>li').addClass('over');
-                } else if (sct < $('.mask').height()) {
-                    $('nav').removeClass('down');
-                    $('nav').addClass('up');
-                    $('#menu>li').removeClass('over');
-                    $('#menu>li').addClass('under');
-                }
-            });
-
-            $('#naver_map').click(function() {
-                location.href = "https://map.naver.com/index.nhn?query=7JWE7KO864yA7ZWZ6rWQ67OR7JuQ&enc=b64&tab=1";
-            });
-            $('#daum_map').click(function() {
-                location.href = "http://map.daum.net/?from=total&nil_suggest=btn&tab=place&q=%EC%95%84%EC%A3%BC%EB%8C%80%ED%95%99%EA%B5%90%EB%B3%91%EC%9B%90";
-            });
-            $('#google_map').click(function() {
-                location.href = "https://www.google.co.kr/maps/place/%EC%95%84%EC%A3%BC%EB%8C%80%ED%95%99%EA%B5%90%EB%B3%91%EC%9B%90/@37.2769987,127.0456275,16z/data=!4m5!3m4!1s0x357b5b5105596873:0x70597e27e7cf9549!8m2!3d37.2794275!4d127.0474729";
-            });
-
-            //모바일버전 레이아웃
-            var mw = $(window).width() - 20;
-            if (mw <= 400) {
-                function layout() {
-                    $('#mb_log').css({
-                        marginLeft: -$('#mb_log').width() / 2,
-                        marginLeft: -$('#mb_log').height() / 2,
-                    });
-                    $('#mb_pic').css({
-                        width: mw,
-                        height: mw
-                    });
-                    $('#mb_second_main').css({
-                        width: mw,
-                        height: mw
-                    });
-                    var mb_bg = ["#ccffff", "#99ccff", "#99ffff"];
-                    var mb_bg_sec = ["#006666", "#ff6666", "#0066ff", "#00ffff"];
-                    $('#mb_second_main>li').css({
-                        width: mw,
-                        height: mw * 0.3333,
-                        backgroundColor: function(index) {
-                            return mb_bg[index];
-                        }
-                    });
-                    $('#mb_mask').css({
-                        width: mw,
-                        height: 228
-                    });
-                    $('#mb_img_wrap').css({
-                        width: mw * 3,
-                        height: 228
-                    });
-                    $('#mb_logo').css({
-                        marginLeft: -$('#mb_logo').width() / 2
-                    });
-                    $('#mb_img_wrap>li').css({
-                        width: mw,
-                        height: 228,
-                        //                    backgroundColor:function(index){
-                        //                        return mb_bg_sec[index];
-                        //                    }
-                    });
-                    $("#mb_health").css({
-                        width: mw,
-                        height: mw
-                    });
-                    $("#mb_health>li").css({
-                        width: mw * 0.5,
-                        height: mw * 0.5,
-                        //                    backgroundColor:function(index){
-                        //                        return mb_bg_sec[index];
-                        //                    }
-                    });
-                    $('#mb_how_come').css({
-                        width: mw,
-                        height: mw,
-                    });
-                    $('#mb_footer').css({
-                        width: mw,
-                        height: mw * 0.5,
-                    });
-
-                }
-                layout();
-            }
-            $(window).resize(function() {
-                mw = $(window).width();
-                layout();
-
-            });
-            /*$('#close').click(function() {
-                $('#pop_up').slideUp(200);
-            });
-            var c = 0;
-            $('#size').click(function() {
-                c++;
-                if (c % 2 == 1) {
-                    $('#pop_up').css({
-                        width: $(window).width(),
-                        height: $(window).height()
-                    });
-                }
-                else if(c%2==0){
-                     $('#pop_up').css({
-                        width: 500,
-                        height: 500
-                    });
-                }
-            });*/
-
-            /*setTimeout(function() {
-                $('#pop_up').fadeIn();
-            }, 2000)*/
-
-            $('.mb_search_title').css({
-                marginTop: -$('.mb_search_title').height() * 1.5
-
-            });
-            $('#mb_input_text').css({
-                marginLeft: -$('#mb_input_text').width() * 0.75,
-                marginTop: -$('#mb_input_text').height() * 0.1
-            });
-            $('#mb_menu').css({
-                width: mw,
-                height: mw * 0.75,
-                top: $('#mb_hide_menu').height(),
-                left: 0
-            });
-            $('#mb_menu>li').css({
-                width: mw,
-                height: $('#mb_menu').height * 0.25
-            });
-            $('#mb_hide_menu').click(function() {
-                $('#mb_menu').slideToggle(1000);
-            });
-            $('#mb_right').click(function() {
-                $('#mb_img_wrap').animate({
-                    left: -mw
-                }, 1000, function() {
-                    $('#mb_img_wrap').css('left', 0).find('li').first().appendTo('#mb_img_wrap');
-                });
-            });
-            setInterval(function() {
-                $('#mb_right').trigger('click');
-            }, 5000);
-            $('.intro').click(function() {
-                location.href = "intro.html";
-
-            });
-
-        }); //end
-
-    </script>
+    <link href="css/reset.css" type="text/css" rel="stylesheet">
+    <link href="css/swiper.css" type="text/css" rel="stylesheet">
+    <link href="css/index.css" type="text/css" rel="stylesheet">
+    <link href="css/tab.css" type="text/css" rel="stylesheet">
+    <script src="js/jquery-3.2.1.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/jquery.transit.min.js"></script>
+    <script src="js/jquery.mousewheel.js"></script>
+    <script src="js/jquery.animateNumber.js"></script>
+    <script src="js/swiper.min.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/tab.js"></script>
 </head>
 
 <body>
-    <div id="mb_display">
-        <div id="mb_nav">
-            <h1 id="mb_logo"></h1>
-            <h1 id="mb_hide_menu">
-                <ul id="mb_menu">
-                    <li>진료안내</li>
-                    <li>병원소개</li>
-                    <li>건강정보</li>
-                    <li>고객센터</li>
-                </ul>
-            </h1>
-        </div>
-        <div id="mb_pic"></div>
-        <ul id="mb_second_main">
-            <li></li>
-            <li></li>
-            <li>
-                <h3 class="mb_search_title">의료진 검색</h3>
-                <div id="mb_input_text">
-                    <input type="search" placeholder="의료진을 검색하시오" id="text_area">
-                    <input type="button" value="검색" id="mb_sea_but">
+    <div id="all_mask">
+        <nav id="nav">
+            <ul id="all_menu">
+                <li class="on">HOME</li>
+                <li>INTRODUCE</li>
+                <li>SKILLS</li>
+                <li>PORTOFOLIO</li>
+                <li>자격증</li>
+                <li>슬로건</li>
+                <li>CONTACT ME</li>
+            </ul>
+        </nav>
+        <div id="quick_explain">
+            <div class="center_wrap">
+                <div id="center_mask">
+                    <ul id="quick_ex">
+                        <li><img src="imgs/quick_explain_1.jpg" alt="퀵메뉴 설명"></li>
+                        <li><img src="imgs/quick_explain_2.jpg" alt="퀵메뉴 설명"></li>
+                        <li><img src="imgs/quick_explain_3.jpg" alt="퀵메뉴 설명"></li>
+                    </ul>
+                    <h3 class="quick_arrow left">◀</h3>
+                    <h3 class="quick_arrow right">▶</h3>
+                    <ul id="quci_buts">
+                        <li class="quci_on"></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                    <input type="button" value="닫기" id="quick_close">
                 </div>
+            </div>
+        </div>
+        <div id="quick_but">
+            <p style="width: 100%;
+            height: 100%;text-align: center;line-height: 50px;font-size: 20px;font-weight: 900; float: left; display: none;">X</p>
+        </div>
+        <div id="pc_quick">
+            <div class="center_wrap">
+                <h3 id="qui_title">Quick Contact Me</h3>
+                <p id="thank">Thank you for visiting my portofolio</p>
+                <p id="type_name"><span>Name:</span> <input type="text" placeholder="한글성명"></p>
+                <p id="type_number"><span>Tele Number:</span><select><option>010</option><option>051</option><option>02</option></select><b>-</b><input type="tel" maxlength="4"><b>-</b><input type="tel" maxlength="4"></p>
+                <textarea placeholder="전달할 내용을 입력해주십시오."></textarea>
+                <p id="resume"><a href="imgs/resume.doc" target="_blank">이력서 다운로드</a></p>
+                <input type="submit" value="전송하기" id="submit">
+            </div>
+        </div>
+        <ul id="all_wrap">
+            <li id="home">
+                <div id="home_title">
+                    <h2 class="title eng up_mvig">Portofolio
+                        <div class="line up_mvig"></div>
+                    </h2>
+                    <h3 class="title_sub up_mvig">Kim Joo Chan</h3>
+
+                </div>
+                <div id="leave1"></div>
+                <div id="leave2"></div>
             </li>
-        </ul>
-        <div id="mb_mask">
-            <ul id="mb_img_wrap">
-                <li><img src="mb_img/img1.jpg" alt=""></li>
-                <li><img src="mb_img/img2.jpg" alt=""></li>
-                <li><img src="mb_img/img3.jpg" alt=""></li>
-                <li id="mb_right">●</li>
-            </ul>
-        </div>
-        <ul id="mb_health">
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-        </ul>
-        <div id="mb_how_come">
-            <ul id="mb_icon">
-                <li></li>
-                <li></li>
-            </ul>
-        </div>
-        <footer id="mb_footer"></footer>
-    </div>
-    <div id="pop_up">
-        <div id="pop_but_gr">
-            <input type="button" value="X" class="pop_but" id="close">
-            <input type="button" value="■" class="pop_but" id="size">
-            <input type="button" value="-" class="pop_but">
-        </div>
-        <h1>이 팝업창은 꺼주시길 바랍니다.</h1>
-    </div>
-    <div id="pc_display">
-        <div class="mask">
-            <div id="adive"></div>
-            <header>
-            </header>
-            <nav class="down">
-                <h1 id="logo"></h1>
-                <h1 id="hide_menu"></h1>
-                <div id="hide_menu_nav">
-                    <ul class="hide_nav_con">
-                        <li class="point">진료안내</li>
-                        <li class="sub_point">진료시간표</li>
-                        <li class="sub_point">외래진료</li>
-                        <li class="sub_ital">진료전찰</li>
-                        <li class="sub_ital">진료비 서비스</li>
-                        <li class="sub_point">응급진료</li>
-                        <li class="sub_point">입원진료</li>
-                        <li class="sub_ital">입원안내</li>
-                        <li class="sub_ital">병실생활안내</li>
-                        <li class="sub_ital">면회안내</li>
-                        <li class="sub_ital">퇴원안내</li>
-                        <li class="sub_point">건강보험</li>
-                        <li class="sub_ital">보험안내</li>
-                        <li class="sub_ital">비급여 진료비</li>
-                        <li class="sub_ital">가정간호</li>
-                        <li class="sub_point">사회산업</li>
-                        <li class="sub_point">의료진 찾기</li>
-                        <li class="sub_point">전문센터</li>
-                        <li class="sub_point">진료과</li>
-                        <li class="sub_point">암센터</li>
-                        <li class="sub_point">치과병원</li>
-                        <li class="sub_point">전문클리닉</li>
-                    </ul>
-                    <ul class="hide_nav_con">
-                        <li class="point">병원안내</li>
-                        <li class="sub_point">찾아오시는길</li>
-                        <li class="sub_point">주차안내</li>
-                        <li class="sub_point">주요전화번호</li>
-                        <li class="sub_point">층별위치안내</li>
-                        <li class="sub_point">병원시설안내</li>
-                        <li class="sub_ital">원내시설</li>
-                        <li class="sub_ital">원외시설</li>
-                        <li class="sub_point">자원봉사</li>
-                        <li class="sub_ital">자원봉사활동</li>
-                        <li class="sub_ital">자원봉사영역</li>
-                        <li class="sub_ital">참여안내</li>
-                        <li class="sub_ital">공지사항</li>
-                        <li class="sub_point intro">병원인사말</li>
-                        <li class="sub_point">역대 병원장</li>
-                        <li class="sub_point">조직도</li>
-                        <li class="sub_point">병원소식</li>
-                        <li class="sub_point">언론보도</li>
-                        <li class="sub_point">채용공고</li>
-                        <li class="sub_point">입찰공고</li>
-                    </ul>
-                    <ul class="hide_nav_con">
-                        <li class="point">건강정보</li>
-                        <li class="sub_point">건강칼럼</li>
-                        <li class="sub_point">건강강좌</li>
-                        <li class="sub_point">학술행사</li>
-                        <li class="sub_point">질병정보</li>
-                        <li class="sub_point">검사정보</li>
-                        <li class="sub_point">첨단장비</li>
-                    </ul>
-                    <ul class="hide_nav_con">
-                        <li class="point">고객서비스</li>
-                        <li class="sub_point">자주하는 질물</li>
-                        <li class="sub_point">복약상담</li>
-                        <li class="sub_point">고객의 소리</li>
-                        <li class="sub_point">서식 다우로드</li>
-                    </ul>
-                </div>
-                <ul id="menu">
-                    <li id="tre">진료<br><em>treament</em>
-                        <ul class="sub_menu" id="tre_sub_menu">
-                            <li>시간표</li>
-                            <li class="ground">외래진료
-                                <ul class="double_sub" id="tre_dou_1">
-                                    <li>진료절차</li>
-                                    <li>진료서비스</li>
-                                </ul>
+            <li id="introduce">
+                <h2 class="title eng all_tie">INTRODUCE
+                    <div class="line"></div>
+                </h2>
+                <ul id="intro_list">
+                    <li>
+                        <div class="list_img"></div>이름:김주찬</li>
+                    <li>
+                        <div class="list_img"></div>전공:컴퓨터정보과</li>
+                    <li>
+                        <div class="list_img"></div>수료:SBS아카데미 컴퓨터 아트학원</li>
+                </ul>
+            </li>
+            <li id="skill">
+                <div id="snow1"></div>
+                <div id="snow2"></div>
+                <div id="snowdown1"></div>
+                <div id="snowdown2"></div>
+                <h2 class="title eng all_tie">Program skills
+                    <div class="line"></div>
+                </h2>
+                <div class="center_wrap">
+                    <div id="skill_mask">
+                        <ul id="skill_chart">
+                            <li>
+                                <div class="graph">
+                                    <img src="imgs/graph1.png">
+                                    <h3 class="reward">??</h3>
+                                </div>
                             </li>
-                            <li>응급진료</li>
-                            <li class="ground">입원진료
-                                <ul class="double_sub" id="tre_dou_2">
-                                    <li>입원안내</li>
-                                    <li>병실생활</li>
-                                    <li>면회안내</li>
-                                    <li>퇴원안내</li>
-                                </ul>
+                            <li>
+                                <div class="graph">
+                                    <img src="imgs/graph2.png">
+                                    <h3 class="reward">??</h3>
+                                </div>
                             </li>
-                            <li class="ground">건강보험
-                                <ul class="double_sub" id="tre_dou_3">
-                                    <li>보험안내</li>
-                                    <li>비급여진료비</li>
-                                </ul>
+                            <li>
+                                <div class="graph">
+                                    <img src="imgs/graph.png">
+                                    <h3 class="reward">??</h3>
+                                </div>
                             </li>
-                            <li class="ground">진료과
-                                <ul class="double_sub" id="tre_dou_4">
-                                    <li>의료진</li>
-                                    <li>전문센터</li>
-                                    <li>진료과</li>
-                                    <li>암센터</li>
-                                    <li>치과병원</li>
-                                </ul>
+                            <li>
+                                <div class="graph">
+                                    <img src="imgs/graph3.png">
+                                    <h3 class="reward">??</h3>
+                                </div>
                             </li>
-                            <li>가정간호</li>
-                            <li>사회사업</li>
-                        </ul>
-                    </li>
-                    <li id="host">병원<br><em>hospital</em>
-                        <ul class="sub_menu" id="host_sub_menu">
-                            <li class="ground">병원소개
-                                <ul class="double_sub" id="tre_dou_5">
-                                    <li class="intro">인사말</li>
-                                    <li>병원장</li>
-                                    <li>조직도</li>
-                                    <li>임상성과</li>
-                                    <li>병원소식</li>
-                                    <li>언론보도</li>
-                                    <li>채용공고</li>
-                                    <li>입찰공고</li>
-                                </ul>
-                            </li>
+                            <li>
+                                <div class="graph">
+                                    <img src="imgs/graph5.png">
+                                    <h3 class="reward">??</h3>
+                                </div>
 
-                            <li class="ground">이용안내 </li>
-                            <li class="ground">시설안내
-                                <ul class="double_sub" id="tre_dou_6">
-                                    <li>원내 병원시설</li>
-                                    <li>원외 병원시설</li>
-                                </ul>
                             </li>
-                            <li class="ground">자원봉사
-                                <ul class="double_sub" id="tre_dou_7">
-                                    <li>자원봉사활동</li>
-                                    <li>자원봉사영역</li>
-                                    <li>참여안내</li>
-                                    <li>공지사항</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="dow_tag">건강정보<br><em>health</em>
-                        <ul class="fir_menu low_menu">
-                            <li>건강칼럼</li>
-                            <li>건강강좌</li>
-                            <li>학술행사</li>
-                            <li>질병정보</li>
-                            <li>검사정보</li>
-                            <li>첨단장비</li>
-                        </ul>
-                    </li>
-                    <li class="dow_tag">고객센터<br><em>community</em>
-                        <ul class="sec_menu low_menu">
-                            <li>자주하는 질문</li>
-                            <li>복약상담</li>
-                            <li>고객의 소리</li>
-                            <li>신생아 탄생축하</li>
-                            <li>서식다운로드</li>
-                        </ul>
-                    </li>
-                </ul>
-
-            </nav>
-        </div>
-        <div id="white">
-            <section id="tre_box" class="al_box">
-                <ul id="tre_sub">
-                    <li>
-                        <h3>진료예약</h3>
-                        <p class="impor"><br/>빠르고 쉽게 진료예약을 <br/> 하실수 있습니다.</p>
-                        <div id="tre_gr">
-                            <input type="button" value="진료예약">
-                            <input type="button" value="진료조회">
-                        </div>
-                    </li>
-                    <li>
-                        <h3>진료안내</h3>
-                        <p class="impor"><br/>대표전화 : 1688-6114 <br/><br/> 암환자 전화:02-****-**** </p>
-                        <input type="button" value="진료시간표" id="chart">
-                    </li>
-                    <li>
-                        <h3>의료진 찾기</h3>
-                        <p class="impor">아주대학교 병원의 의료진은<br/> 환자를 위해 항상 노력하고 있습니다.</p>
-                        <div id="in_gr">
-                            <input type="search" placeholder="의료진을 검색하시오." id="see"><input type="button" value="검색" id="see_1">
-                        </div>
-                    </li>
-                    <li>
-                        <div id="input">
-                            <h3>진료과 찾기</h3>
-                            <div id="select">
-                                <select class="sel">
-                                 <optgroup label="진료과">
-                                <option>가정의학과</option>
-                                <option>감염내과</option>
-                                <option>소아외과</option>
-                                <option>성형외과</option>
-                                <option>산부인과</option>
-                            </select>
-                                <select class="sel">
-                                  <optgroup label="전문센터">
-                                <option>감마나이프센터</option>
-                                <option>사경센터</option>
-                                <option>심혈관센터</option>
-                                <option>스포츠의학과</option>
-                            </select>
-                                <input type="button" value="검색">
-                            </div>
-                            <input type="search" placeholder="진료과를 검색하시오." id="sea">
-                        </div>
-                    </li>
-                </ul>
-            </section>
-            <section id="hos_box" class="al_box">
-                <ul id="hos_sub">
-                    <li class="tab_wrap">
-                        <input type="radio" name="tab" id="rad_1" class="hid" checked="checked">
-                        <input type="radio" name="tab" id="rad_2" class="hid">
-                        <label for="rad_1" class="tit" id="hos_new_txt">병원소식</label>
-                        <label for="rad_2" class="tit" id="bord_new_txt">언론보도</label>
-                        <div id="hos_new" class="tab_box">
-                            <h4>알레르기내과, 세계알레르기학회 우수 센터 선정</h4><em>2018-02-01</em>
-                            <h4>‘환자‧보호자를 위한 음악회’ 개최</h4><em>2018-01-15</em>
-                            <h4>아주대학교병원, 소아암 환아를 위한 신년 행사 개최</h4><em>2018-01-12</em>
-                            <h4>아주대학교병원-청음회관 청각장애인을 위한 MOU 체결</h4><em>2017-12-11</em>
-                            <h4> 위장관외과, 태국 탐마삿대학교 단기연수의사 수료식 개최해</h4><em>2017-11-20</em>
-                            <h4> 더보기...</h4>
-                        </div>
-                        <div id="bord_new" class="tab_box">
-                            <h4>미세먼지 건강 챙기려면 외출 할 땐 보건용 마스크 쓰기</h4><em>2018-02-07</em>
-                            <h4>조연을 격려하는 사회 - 김영호 치과병원장</h4><em>2018-01-12</em>
-                            <h4>하루에 물 8컵 마시면 미세먼지 배출에 도움 </h4><em>2018-01-10</em>
-                            <h4>로프보다 쉽게 풀리게 소매,장갑형 억제대 보급 절실</h4><em>2017-12-09</em>
-                            <h4> 아주대병원 경기지역암센터 11월 한달간 암교육 강좌..</h4><em>2017-11-25</em>
-                            <h4> 더보기...</h4>
-                        </div>
-
-                    </li>
-                    <li class="tab_wrap">
-                        <input type="radio" name="tab_1" id="rad_3" class="hid" checked="checked">
-                        <input type="radio" name="tab_1" id="rad_4" class="hid">
-                        <label for="rad_3" class="tit" id="job_new_txt">채용공고</label>
-                        <label for="rad_4" class="tit" id="tender_new_txt">입찰공고</label>
-                        <div id="job_new" class="tab_box">
-                            <h4>약제팀 약사(야간전담) 채용</h4><em>2018-02-01</em>
-                            <h4>총무팀 차량운영실 기사(계약직) 채용-기간연장</h4><em>2018-02-15</em>
-                            <h4>간호본부 외래 간호사(계약직) 채용</h4><em>2018-01-18</em>
-                            <h4>건강증진센터 임상병리사(시간제) 채용 </h4><em>2017-11-11</em>
-                            <h4> 건강증진센터 진료파트 사무(시간제) 채용</h4><em>2017-10-20</em>
-                            <h4> 더보기...</h4>
-                        </div>
-                        <div id="tender_new" class="tab_box">
-
-                            <h4>환자용 전자진료카드 공급업체 선정 재공고</h4><em>2015-02-01</em>
-                            <h4>전산소모폼 공급업체 선정</h4><em>2015-01-15</em>
-                            <h4>의료용 공기암축기 1호기 교체공사</h4><em>2014-01-12</em>
-                            <h4>EMR 파일서버 및 백업라이센스구매 입찰 </h4><em>2012-12-11</em>
-                            <h4> 신도리코 공급업체 선정..</h4><em>2010-11-20</em>
-                            <h4> 더보기...</h4>
-                        </div>
-
-                    </li>
-                </ul>
-            </section>
-            <section id="hos_intro" class="al_box">
-                <div class="but" id="left">◀</div>
-                <div class="but" id="right">▶</div>
-                <ul id="img_wrap">
-                    <li><img src="img/introimg/1.jpg"></li>
-                    <li><img src="img/introimg/2.jpg"></li>
-                    <li><img src="img/introimg/3.jpg"></li>
-                    <li><img src="img/introimg/4.jpg"></li>
-                </ul>
-            </section>
-            <section id="health_info" class="al_box">
-                <ul id="health_sub">
-                    <li>
-                        <div class="sentence">
-                            <h4>체력관리</h4>
-                            <br/><br/>
-                            <p>어떻게 하면 효율적으로<br/> 자신의 몸을 지키는 가</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="sentence ">
-                            <h4>건강 강좌</h4>
-                            <br/><br/>
-                            <p>강사님과 함께 하므로 <br/> 궁금증이 있으면 물어보기</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="sentence dark_fon">
-                            <h4>질병 정보</h4>
-                            <br/><br/>
-                            <p>사후가 아닌 <br/> 사전에 미리 알아보기</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="sentence dark_fon">
-                            <h4>검사 정보</h4>
-                            <br/><br/>
-                            <p>본인의 현 건강 상태를<br/> 확인 해보기</p>
-                        </div>
-                    </li>
-                </ul>
-            </section>
-            <section id="ex_site" class="al_box">
-                <ul id="ex_si_box">
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                </ul>
-            </section>
-            <section id="how_com" class="al_box">
-                <h3 id="com_tit">오시는 길</h3>
-                <ul id="com_icon">
-                    <li><img src="img/howcom/4.png" alt="" class="img" id="img_1" />
-                        <img src="img/howcom/1.png" alt="" class="img" id="img_2" />
-
-                    </li>
-                    <li><img src="img/howcom/5.png" alt="" class="img" id="img_3" />
-                        <img src="img/howcom/2.png" alt="" class="img" id="img_4" /></li>
-                    <li><img src="img/howcom/6.png" alt="" class="img" id="img_5" />
-                        <img src="img/howcom/3.png" alt="" class="img" id="img_6" /></li>
-                </ul>
-                <div id="map">
-                    <div id="everything">
-                        <h4>주소:</h4>
-                        <p>경기도 수원시<br/> 영통구 월드컵로 164(원천동 산5)</p>
-                        <ul id="site_map">
-                            <li>naver<img src="img/map/navermap.jpg" alt="" / class="map" id="naver_map"></li>
-                            <li>daum<img src="img/map/daummap.jpg" alt="" / class="map" id="daum_map"></li>
-                            <li>google<img src="img/map/googlemap.jpg" alt="" / class="map" id="google_map"></li>
                         </ul>
                     </div>
                 </div>
-            </section>
-            <footer>
-                <section id="top">
-                    <h2 id="sub_logo"></h2>
-                    <ul class="sub_sub_nav">
-                        <li>
-                            <h3>진료</h3>
+            </li>
+            <li id="renewal">
+                <h2 class="title eng all_tie">Portofolio Renewal
+                    <div class="line"></div>
+                </h2>
+                <div id="color_box"></div>
+                <div id="pc_mask">
+                    <ul id="renchart">
+                        <li><img src="imgs/pc_renwal_1be.jpg">
+                            <ul id="renewal_explain">
+                                <li id="hosp">
+                                    <h4 class="renewal_title">리뉴얼 전</h4>
+                                    <ul class="renewalbe_sub">
+                                        <li>선정한 홈페이지:아주대학교 병원</li>
+                                        <li class="pc_reasaon">선정한 이유: 1.최신 웹표준에 맞지않는 기능들을 사용<br>
+                                            <p class="blank"></p>2.첫화면의 대표적인 내용이 없고 클릭해서 들어가야
+                                            <p class="blank">나옴</li>
+                                        <li>
+                                            <p>주조색:로고의 푸른색 계열<span class="origin_color">(#0464b1)</span></p>
+                                        </li>
+                                        <li>
+                                            <p>보조색:<span class="sub_color">회색계열</span></p>
+                                        </li>
+                                        <li>개선해야할 사항:1.제이쿼리 사용으로 배너 제작<br/>
+                                            <p class="blank"></p>2.세로 스크롤바를 사용해서 대표적인 내용표현<br/>
+                                            <p class="blank"></p>3.기본 웹의 크기를 1920~1200에 맞는 페이지제작<br/>
+                                            <p class="blank"></p>4. nav의 내용중 획심을 첫화면에 중요도순으로 배치</li>
+                                    </ul>
+                                    <input type="button" class="go_before" value="바로가기">
+                                </li>
+                                <li id="youngsun">
+                                    <h4 class="renewal_title">리뉴얼 전</h4>
+                                    <ul class="renewalbe_sub">
+                                        <li>선정한 홈페이지:용성토건건설회사</li>
+                                        <li class="pc_reasaon">선정한 이유: 1.최신 웹표준에 맞지않는 기능들을 사용<br>
+                                            <p class="blank"></p>2.제이쿼리형식이 아닌 플래시사용<br>
+                                            <p class="blank"></p>3.첫 화면에 보여주는 내용들이 부족</li>
+                                        <li>
+                                            <p>주조색:로고의 푸른색 계열<span class="origin_color">(#0464b1)</span></p>
+                                        </li>
+                                        <li>
+                                            <p class="sub_color">포인트 색:<span>(#de3e4a)</span></p>
+                                        </li>
+                                        <li>개선해야할 사항:1.플래시를 제거하고 제이쿼리 사용<br>
+                                            <p class="blank"></p>2.세로 스크롤바를 사용해서 대표적인 내용표현<br>
+                                            <p class="blank"></p>3.기본 웹의 크기를 1920~1200에 맞는 페이지제작<br>
+                                            <p class="blank"></p>4. nav의 틀이 있는 블럭 구분선을 제거</li>
+                                    </ul>
+                                    <input type="button" class="go_before" value="바로가기">
+                                </li>
+                                <li id="music">
+                                    <h4 class="renewal_title">리뉴얼 전</h4>
+                                    <ul class="renewalbe_sub">
+                                        <li>선정한 홈페이지:경희실용음악학원</li>
+                                        <li>
+                                            선정한 이유: 1.메인화면에 보여주는 예시가 전부다 배너로 제작<br>
+                                            <p class="blank"></p>2.반응형 웹표준에 만들어져있지 않음<br>
+                                            <p class="blank"></p>3. 사이드메뉴 클릭시 전체적인 레이아웃이 옆으로
+                                            <p class="blank"></p>밀려나감</li>
+                                        <li>
+                                            <p>주조색:<span class="origin_color">회색계열</span></p>
+                                        </li>
+                                        <li>
+                                            <p>포인트색:노란색계열<span class="sub_color">(#fcc125)</span></p>
+                                        </li>
+                                        <li>개선해야할 사항:1.웹표준에 맞게 반응형 적용<br>
+                                            <p class="blank"></p>2.메뉴를 클릭하지 않고 맛보기로 볼수있도록 구성<br>
+                                            <p class="blank"></p>3.기본 웹 크기를 3000~1920에서 가로레이아웃구성<br>
+                                            <p class="blank"></p>4. 메인배너의 필요없는 것을 줄여서 최소화 하기</li>
+                                    </ul>
+                                    <input type="button" class="go_before" value="바로가기">
+                                </li>
+                                <li id="cocoelect">
+                                    <h4 class="renewal_title">리뉴얼 전</h4>
+                                    <ul class="renewalbe_sub">
+                                        <li>선정한 홈페이지:쿠쿠전자 밥솥광고</li>
+                                        <li>
+                                            선정한 이유: 1.웹표준에 맞지않는 반응형이 미 적용<br>
+                                            <p class="blank"></p>
+                                            2.모두가 이미지로 제작되어 있음<br>
+                                            <p class="blank">
+                                                3.쿠쿠전자 홈페이지에서 상세보기로 들어가야함</li>
+                                        <li>
+                                            <p>주조색<span class="origin_color">회색계열</span></p>
+                                        </li>
+                                        <li>
+                                            <p>보조색 색:빨간색계열<span class="sub_color red">(#ff2400)</span></p>
+                                            <p>,파란색계열<span class="sub_color blue">(#3333ff)</span></p>
+                                        </li>
+                                        <li>개선해야할 사항:1.웹표준에 맞게 반응형 적용<br>
+                                            <p class="blank"></p>
+                                            2.포인트 줘서 획심의 내용을 표현<br>
+                                            <p class="blank"></p>
+                                            3.쿠쿠전자 홈페이지를 반응형 웹표준 적용</li>
+                                    </ul>
+                                    <input type="button" class="go_before" value="바로가기">
+                                </li>
+                            </ul>
                         </li>
-                        <li>진료예약</li>
-                        <li>진료조회</li>
-                        <li>진료시간표</li>
-                        <li>의료진찾기</li>
-                    </ul>
-                    <ul class="sub_sub_nav">
-                        <li>
-                            <h3>병원</h3>
+                        <li><img src="imgs/pc_renwal_1.jpg">
+                            <ul id="renewalafter_explain">
+                                <li id="hospafter">
+                                    <h4 class="renewal_title">리뉴얼후</h4>
+                                    <ul class="renewalbe_sub">
+                                        <li>
+                                            개선된 사항:1.제이쿼리 사용으로 배너 제작<br>
+                                            <p class="blank"></p> 2.세로 스크롤바를 사용해서 대표적인 내용표현<br>
+                                            <p class="blank"></p>3.기본 웹의 크기를 1920~1200에 맞는 페이지제작<br>
+                                            <p class="blank"></p> 4. nav의 내용중 획심을 첫화면에 중요도순으로 배치
+                                        </li>
+                                        <li>
+                                            <p>주조색:로고의 푸른색 계열<span class="origin_color">(#0b62a5)</span></p>
+                                        </li>
+                                        <li>
+                                            <p>포인트 색:<span class="sub_color">(#de3e4a)</span></p>
+                                        </li>
+                                    </ul>
+                                    <div class="after_reference">
+                                        <input type="button" class="go_after ref_1" value="참고사이트1"><input type="button" class="go_after ref_2" value="참고사이트2"><input type="button" class="go_after go_page" value="바로가기">
+                                    </div>
+                                </li>
+                                <li id="youngsunafter">
+                                    <h4 class="renewal_title">리뉴얼후</h4>
+                                    <ul class="renewalbe_sub">
+                                        <li>개선해야할 사항:1.플래시를 제거하고 제이쿼리 사용<br>
+                                            <p class="blank"></p>2.세로 스크롤바를 사용해서 대표적인 내용표현<br>
+                                            <p class="blank"></p>3.기본 웹의 크기를 1920~1200에 맞는 페이지제작<br>
+                                            <p class="blank"></p>4. nav의 틀이 있는 블럭 구분선을 제거<br>
+                                            <p class="blank"></p>5. 알아보기 쉬운 무한 갤러리 형식으로 제작<br>
+                                            <p class="blank"></p>6.nav 클릭시 해당하는 영역으로 스크롤 이동</li>
+                                        <li>
+                                            <p>주조색:로고의 푸른색 계열<span class="origin_color">(#0b62ff)</span></p>
+                                        </li>
+                                        <li>
+                                            <p>포인트 색:<span class="sub_color">(#de3e4a)</span></p>
+                                        </li>
+                                    </ul>
+                                    <div class="after_reference">
+                                        <input type="button" class="go_after ref_1" value="참고사이트1"><input type="button" class="go_after go_page" value="바로가기">
+                                    </div>
+                                </li>
+                                <li id="musicafter">
+                                    <h4 class="renewal_title">리뉴얼후</h4>
+                                    <ul class="renewalbe_sub">
+                                        <li>개선된 사항:1.웹표준에 맞게 반응형 적용<br>
+                                            <p class='blank'></p>
+                                            2.메뉴를 클릭하지 않고 맛보기로 볼수있도록 구성<br>
+                                            <p class='blank'></p>
+                                            3.기본 웹의 크기를 3000~1920에서는 가로레이아웃 구성
+                                            <br>
+                                            <p class='blank'></p>
+                                            4. 메인배너의 필요없는 것을 줄여서 최소화 하기<br>
+                                            <p class='blank'></p>
+                                            5.1920이하로는 세로 레이아웃으로 구성<br>
+                                            <p class='blank'></p>
+                                            6.hover시 그림이 바귀는 버튼 만들기</li>
+                                        <li>
+                                            <p>주조색:회색계열<span class="origin_color">(#ccc)</span></p>
+                                        </li>
+                                        <li>주조색을 고른 이유:사람의 눈에 가장 문안한 회색계열을 사용</li>
+                                        <li>
+                                            <p>포인트색상:노란색계열<span class="sub_color">(#fcc125)</span></p>
+                                        </li>
+                                        <li>보조색을 고른 이유: 무채색 계열 회색에서 고명도 고채도로 가는 <br>
+                                            <p class="blank"></p>노란색 계열을 넣어서눈에 듸고 아기자기함을 넣어서<br>
+                                            <p class="blank"></p>
+                                            교육의 분위기가 험하지 않다라는 것을 표현함</li>
+                                    </ul>
+                                    <div class="after_reference">
+                                        <input type="button" class="go_after ref_1" value="참고사이트1"><input type="button" class="go_after ref_2" value="참고사이트2"><input type="button" class="go_after go_page" value="바로가기">
+                                    </div>
+                                </li>
+                                <li id="cocoafter">
+                                    <h4 class="renewal_title">리뉴얼후</h4>
+                                    <ul class="renewalbe_sub">
+                                        <li>개선된 사항:1.웹표준에 맞게 반응형 적용<br>
+                                            <p class="blank"></p>2.포인트 줘서 획심의 내용을 표현<br>
+                                            <p class="blank"></p>3.쿠쿠전자 홈페이지를 반응형 웹표준 적용<br>
+                                            <p class="blank"></p>4.이미지가 아닌 글자 폰트를 사용한 광고<br>
+                                            <p class="blank"></p>5.제이쿼리를 이용한 슬라이드형식으로 보여주는 영역<br>
+                                            <p class="blank"></p>6.움직이는 애니메이션을 적용</li>
+                                        <li>
+                                            <p>주조색:회색계열<span class="origin_color">(#ccc)</span></p>
+                                        </li>
+                                        <li>주조색을 고른 이유:사람의 눈에 가장 문안한 회색계열을 사용(#ccc)</li>
+                                        <li>
+                                            <p>보조색:빨강색계열<span class="sub_color red">(#ef2c2c)</span></p>
+                                        </li>
+                                        <li>
+                                            <p>보조색:파란색계열<span class="sub_color blue">(#2c6bea)</span></p>
+                                        </li>
+                                        <li>보조색을 고른 이유: 무채색 계열 회색에서 고명도 고채도로 가는 <br>
+                                            <p class="blank"></p>빨강색 계열을 넣어서눈에 띄고 고압력을 표현함<br>
+                                            <p class="blank"></p>
+                                            파란색 계열을 넣어서눈에 띄고 무압력을 표현함</li>
+                                    </ul>
+                                    <div class="after_reference">
+                                        <input type="button" class="go_after go_page" value="바로가기">
+                                    </div>
+                                </li>
+                            </ul>
                         </li>
-                        <li class="intro">인산말</li>
-                        <li>언론보도</li>
-                        <li>채용공고</li>
-                        <li>위치안내</li>
                     </ul>
-                    <ul class="sub_sub_nav">
-                        <li>
-                            <h3>건강정보</h3>
-                        </li>
-                        <li>건강칼럼</li>
-                        <li>질병정보</li>
-                        <li>건강강좌</li>
-                        <li>건장정보</li>
+                    <ul id="pc_dot">
+                        <li class="dot_on"></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
                     </ul>
-                    <ul class="sub_sub_nav">
-                        <li>
-                            <h3>고객센터</h3>
-                        </li>
-                        <li>FAQ</li>
-                        <li>고객의 소리</li>
-                        <li>서식다운로드</li>
-                    </ul>
-                </section>
+                </div>
+            </li>
 
-            </footer>
+            <li id="lin">
+                <div id="thrid_pic"></div>
+                <h2 class="title eng all_tie">
+                    CERTIFICATE
+                    <div class="line"></div>
+                </h2>
+                <ul id="lin_list">
+                    <li>
+                        웹디자인기능사</li>
+                    <li>
+                        컴퓨터 그래픽스 운용 기능사</li>
+                    <li>
+                        MOS(Mircosoft Office Specialist)</li>
+                    <li>
+                        워드프로세스</li>
+                </ul>
+            </li>
+            <li id="slogan">
+                <div id="slogan_title">
+                    <h2 class="title eng all_tie">SLOGAN
+                    </h2>
+                    <p id="slo_sub">시근종태 인지상정 원 시종여시</p>
+                    <div class="line"></div>
+                    <p id="slo_sub_sub">시작 할 때 근면성실하고 끝이 날때는 태만해지는 것이<br> 사람의 마음이니 끝날 때까지 시작과 같이 해라</p>
+                </div>
+            </li>
+            <li id="contact">
+                <div id="con_pic">
+                    <div id="windy"></div>
+                    <div id="windy_1"></div>
+                    <div class="line"></div>
+                </div>
+                <h2 class="title eng all_tie">
+                    CONTACT ME
+
+                </h2>
+                <ul id="contac_list">
+                    <li>
+                        전화번호:010-6727-0240</li>
+                    <li>
+                        이메일:jc5240240@naver.com</li>
+                    
+                </ul>
+                <address>Copyrightⓒ 2018. KimJooChan. All rights reserved.</address>
+            </li>
+        </ul>
+    </div>
+    <div id="tab_display">
+        <div id="tab_quick">
+            <h3 id="tab_qui_title">Quick Contact Me</h3>
+            <p id="tab_thank">Thank you for visiting my portofolio</p>
+            <p id="tab_type_name"><span>Name:</span> <input type="text" placeholder="한글성명"></p>
+            <p id="tab_type_number"><span>Tele Number:</span><select><option>010</option><option>051</option><option>02</option></select><b>-</b><input type="tel" maxlength="4"><b>-</b><input type="tel" maxlength="4"></p>
+            <textarea placeholder="전달할 내용을 입력해주십시오."></textarea>
+            <input type="submit" value="전송하기" id="tab_submit">
+        </div>
+        <div id="tab_quick_but"></div>
+        <div id="tab_quick_closed">닫기</div>
+        <div id="tab_quick_explain">
+            <input type="button" value="닫기" id="tab_quick_close">
+            <div class="swiper-containe" id="tab_quick_mask">
+                <ul class="swiper-wrapper" id="tab_quick_wrap">
+                    <li class="swiper-slide"><img src="imgs/quick_explain_tab1.jpg" alt="설명1"></li>
+                    <li class="swiper-slide"><img src="imgs/quick_explain_tab2.jpg" alt="설명1"></li>
+                    <li class="swiper-slide"><img src="imgs/quick_explain_tab3.jpg" alt="설명1"></li>
+                </ul>
+                <div class="swiper-pagination" style="position: fixed;z-index: 999;"></div>
+            </div>
+        </div>
+        <header id="tab_head">
+            <nav>
+                <ul id="nav_mark">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </nav>
+            <ul id="tab_nav">
+                <li><a href="#">HOME</a></li>
+                <li><a href="#">PROFILE</a></li>
+                <li><a href="#">SKILL</a></li>
+                <li><a href="#">RENEWAL</a></li>
+                <li><a href="#">CERTIFICATION</a></li>
+                <li><a href="#">SLOGAN</a></li>
+                <li><a href="#">CONTACT ME</a></li>
+            </ul>
+        </header>
+        <div id="scrol_mask">
+            <div id="scroll_bar">
+                <ul id="tab_wrap">
+                    <li id="tab_home">
+                        <h2 class="tab_title">PORTFOLIO<span>KIM JOO CHAN</span></h2>
+                    </li>
+                    <li id="tab_profile">
+                        <h2 class="tab_title">INTRODUCE</h2>
+                        <ul id="tab_profile_list">
+                            <li>성명:김주찬</li>
+                            <li>전공: 컴퓨터 정보과</li>
+                            <li>학원: SBS컴퓨터아트 아카데미</li>
+                        </ul>
+                    </li>
+                    <li id="tab_skill">
+                        <div id="tab_snow"></div>
+                        <h2 class="tab_title">Program Skills</h2>
+                        <h3 id="prog">PHOTOSHOP</h3>
+                        <ul id="prog_select">
+                            <li class="tab_on">PS</li>
+                            <li>AI</li>
+                            <li>HTML</li>
+                            <li>CSS</li>
+                            <li>JQUERY</li>
+                        </ul>
+                        <div id="tab_prog_chart">
+                            <img src="imgs/pschart.png">
+                            <span class="counter">70</span><span id="percent">%</span>
+                        </div>
+                    </li>
+                    <li id="tab_renewal">
+                        <h2 class="tab_title">Renewal Portfolio</h2>
+                        <div class="swiper-containe" id="tab_mask">
+                            <ul class="swiper-wrapper" id="tab_img_wrap">
+                                <li class="swiper-slide">
+                                    <img src="imgs/pc_renwal_1.jpg" title="" />
+                                </li>
+                                <li class="swiper-slide">
+                                    <img src="imgs/pc_renwal_2.jpg" title="" />
+                                </li>
+                                <li class="swiper-slide">
+                                    <img src="imgs/pc_renwal_3.jpg" title="" />
+                                </li>
+                                <li class="swiper-slide">
+                                    <img src="imgs/pc_renwal_4.jpg" title="" />
+                                </li>
+                            </ul>
+                            <div class="swiper-pagination" style="position: fixed;z-index: 999;"></div>
+                        </div>
+                    </li>
+                    <li id="tab_lincense">
+                        <h2 class="tab_title">Certification</h2>
+                        <ul id="tab_lin_name">
+                            <li>웹디자인 기능사(필기)</li>
+                            <li>컴퓨터 그래픽 운용기능사</li>
+                        </ul>
+                        <div id="tab_lin_pic"></div>
+                    </li>
+                    <li id="tab_slogan">
+                        <h2 class="tab_title">Slogan</h2>
+                        <h3 id="tab_slo">시근종태 인지상정 원 시종여시</h3>
+                        <div id="tab_line"></div>
+                        <p id="tab_slo_sub">
+                            시작 근면성실하고 끝이 날때는 태만해지는 것이<br>사람의 마음이니 끝날 때까지 시작과 같이 해라
+                        </p>
+                    </li>
+                    <li id="tab_contact">
+                        <h2 class="tab_title">Contact me</h2>
+                        <ul id="tab_cont_name">
+                            <li>
+                                <p>전화번호:010-6727-0240</p>
+                            </li>
+                            <li>
+                                <p>이메일:jc5240240@naver.com</p>
+                            </li>
+                        </ul>
+                        <div id="tab_cont_pic">
+                            <img src="imgs/display_tab_7.jpg">
+                        </div>
+                        <div id="tab_copyright">
+                            <address>Copyrightⓒ 2018. KimJooChan. All rights reserved.</address>
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </body>
